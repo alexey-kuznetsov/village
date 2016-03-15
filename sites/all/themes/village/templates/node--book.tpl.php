@@ -21,7 +21,7 @@
       <?php if ($title): ?>
         <h2<?php print $title_attributes; ?>><?php print $title; ?></h2>      
       <?php print render($title_suffix); ?>
-
+	 <?php print render($tabs); ?>
       <?php if ($display_submitted): ?>
         <p class="submitted">
           <?php print $user_picture; ?>

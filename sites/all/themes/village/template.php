@@ -81,6 +81,7 @@ function village_preprocess_node(&$variables, $hook) {
 function village_preprocess_node_book(&$variables, $hook){	
 	$book_link = $variables['node']->book;
 	$variables['tree'] = book_children($book_link);
+	$variables['tabs'] = menu_local_tabs();
 }
 
 

@@ -1,271 +1,69 @@
-/**
- * @file
- * Positioning for a responsive layout.
- *
- * Define CSS classes to create a fluid grid layout with optional sidebars
- * depending on whether blocks are placed in the left or right sidebars.
- *
- * This layout uses the Zen Grids plugin for Compass: http://zengrids.com
- */
+/*
+Syntax error: Undefined variable: "$zen-reverse-all-floats".
+        on line 27 of C:/OpenServer/domains/village/sites/all/themes/village/sass/layouts/responsive.scss
 
-/**
- * Center the page.
- *
- * For screen sizes larger than 1200px, prevent excessively long lines of text
- * by setting a max-width.
- */
-#page,
-.region-bottom {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1200px;
-}
-
-/* Apply the shared properties of grid items in a single, efficient ruleset. */
-#header,
-#content,
-#navigation,
-.region-sidebar-first,
-.region-sidebar-second,
-#footer {
-  padding-left: 10px;
-  padding-right: 10px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-  word-wrap: break-word;
-  *behavior: url("/path/to/boxsizing.htc");
-  _display: inline;
-  _overflow: hidden;
-  _overflow-y: visible;
-}
-
-/* Containers for grid items and flow items. */
-#header,
-#main,
-#footer {
-  *position: relative;
-  *zoom: 1;
-}
-#header:before,
-#header:after,
-#main:before,
-#main:after,
-#footer:before,
-#footer:after {
-  content: "";
-  display: table;
-}
-#header:after,
-#main:after,
-#footer:after {
-  clear: both;
-}
-
-/* Navigation bar */
-@media all and (min-width: 480px) {
-  #main {
-    /* Move all the children of #main down to make room. */
-    padding-top: 3em;
-    position: relative;
-  }
-  #navigation {
-    /* Move the navbar up inside #main's padding. */
-    position: absolute;
-    top: 0;
-    height: 3em;
-    width: 100%;
-  }
-}
-
-/**
- * Use 3 grid columns for smaller screens.
- */
-@media all and (min-width: 480px) and (max-width: 959px) {
-
-  /**
-   * The layout when there is only one sidebar, the left one.
-   */
-
-  /* Span 2 columns, starting in 2nd column from left. */
-  .sidebar-first #content {
-    float: left;
-    width: 66.66667%;
-    margin-left: 33.33333%;
-    margin-right: -100%;
-  }
-
-  /* Span 1 column, starting in 1st column from left. */
-  .sidebar-first .region-sidebar-first {
-    float: left;
-    width: 33.33333%;
-    margin-left: 0%;
-    margin-right: -33.33333%;
-  }
-
-  /**
-   * The layout when there is only one sidebar, the right one.
-   */
-
-  /* Span 2 columns, starting in 1st column from left. */
-  .sidebar-second #content {
-    float: left;
-    width: 66.66667%;
-    margin-left: 0%;
-    margin-right: -66.66667%;
-  }
-
-  /* Span 1 column, starting in 3rd column from left. */
-  .sidebar-second .region-sidebar-second {
-    float: left;
-    width: 33.33333%;
-    margin-left: 66.66667%;
-    margin-right: -100%;
-  }
-
-  /**
-   * The layout when there are two sidebars.
-   */
-
-  /* Span 2 columns, starting in 2nd column from left. */
-  .two-sidebars #content {
-    float: left;
-    width: 66.66667%;
-    margin-left: 33.33333%;
-    margin-right: -100%;
-  }
-
-  /* Span 1 column, starting in 1st column from left. */
-  .two-sidebars .region-sidebar-first {
-    float: left;
-    width: 33.33333%;
-    margin-left: 0%;
-    margin-right: -33.33333%;
-  }
-
-  /* Start a new row and span all 3 columns. */
-  .two-sidebars .region-sidebar-second {
-    float: left;
-    width: 100%;
-    margin-left: 0%;
-    margin-right: -100%;
-    padding-left: 0;
-    padding-right: 0;
-    clear: left;
-  }
-
-  /* Apply the shared properties of grid items in a single, efficient ruleset. */
-  .two-sidebars .region-sidebar-second .block {
-    padding-left: 10px;
-    padding-right: 10px;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-    word-wrap: break-word;
-    *behavior: url("/path/to/boxsizing.htc");
-    _display: inline;
-    _overflow: hidden;
-    _overflow-y: visible;
-  }
-
-  /* Span 1 column, starting in the 1st column from left. */
-  .two-sidebars .region-sidebar-second .block:nth-child(3n+1) {
-    float: left;
-    width: 33.33333%;
-    margin-left: 0%;
-    margin-right: -33.33333%;
-    clear: left;
-  }
-
-  /* Span 1 column, starting in the 2nd column from left. */
-  .two-sidebars .region-sidebar-second .block:nth-child(3n+2) {
-    float: left;
-    width: 33.33333%;
-    margin-left: 33.33333%;
-    margin-right: -66.66667%;
-  }
-
-  /* Span 1 column, starting in the 3rd column from left. */
-  .two-sidebars .region-sidebar-second .block:nth-child(3n) {
-    float: left;
-    width: 33.33333%;
-    margin-left: 66.66667%;
-    margin-right: -100%;
-  }
-}
-
-/**
- * Use 5 grid columns for larger screens.
- */
-@media all and (min-width: 960px) {
-
-  /**
-   * The layout when there is only one sidebar, the left one.
-   */
-
-  /* Span 4 columns, starting in 2nd column from left. */
-  .sidebar-first #content {
-    float: left;
-    width: 80%;
-    margin-left: 20%;
-    margin-right: -100%;
-  }
-
-  /* Span 1 column, starting in 1st column from left. */
-  .sidebar-first .region-sidebar-first {
-    float: left;
-    width: 20%;
-    margin-left: 0%;
-    margin-right: -20%;
-  }
-
-  /**
-   * The layout when there is only one sidebar, the right one.
-   */
-
-  /* Span 4 columns, starting in 1st column from left. */
-  .sidebar-second #content {
-    float: left;
-    width: 80%;
-    margin-left: 0%;
-    margin-right: -80%;
-  }
-
-  /* Span 1 column, starting in 5th column from left. */
-  .sidebar-second .region-sidebar-second {
-    float: left;
-    width: 20%;
-    margin-left: 80%;
-    margin-right: -100%;
-  }
-
-  /**
-   * The layout when there are two sidebars.
-   */
-
-  /* Span 3 columns, starting in 2nd column from left. */
-  .two-sidebars #content {
-    float: left;
-    width: 60%;
-    margin-left: 20%;
-    margin-right: -80%;
-  }
-
-  /* Span 1 column, starting in 1st column from left. */
-  .two-sidebars .region-sidebar-first {
-    float: left;
-    width: 20%;
-    margin-left: 0%;
-    margin-right: -20%;
-  }
-
-  /* Span 1 column, starting in 5th column from left. */
-  .two-sidebars .region-sidebar-second {
-    float: left;
-    width: 20%;
-    margin-left: 80%;
-    margin-right: -100%;
-  }
-}
+Backtrace:
+C:/OpenServer/domains/village/sites/all/themes/village/sass/layouts/responsive.scss:27
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.2.19/lib/sass/script/variable.rb:49:in `_perform'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.2.19/lib/sass/script/node.rb:40:in `perform'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.2.19/lib/sass/script/operation.rb:73:in `_perform'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.2.19/lib/sass/script/node.rb:40:in `perform'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:204:in `visit_if'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `visit'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:100:in `visit'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `map'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:128:in `visit_root'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `visit'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:100:in `visit'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:7:in `visit'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.2.19/lib/sass/tree/root_node.rb:20:in `render'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.2.19/lib/sass/engine.rb:315:in `_render'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.2.19/lib/sass/engine.rb:262:in `render'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-0.12.6/lib/compass/compiler.rb:139:in `block (2 levels) in compile'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-0.12.6/lib/compass/compiler.rb:126:in `timed'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-0.12.6/lib/compass/compiler.rb:138:in `block in compile'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-0.12.6/lib/compass/logger.rb:45:in `red'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-0.12.6/lib/compass/compiler.rb:137:in `compile'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-0.12.6/lib/compass/compiler.rb:118:in `compile_if_required'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-0.12.6/lib/compass/compiler.rb:103:in `block (2 levels) in run'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-0.12.6/lib/compass/compiler.rb:101:in `each'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-0.12.6/lib/compass/compiler.rb:101:in `block in run'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-0.12.6/lib/compass/compiler.rb:126:in `timed'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-0.12.6/lib/compass/compiler.rb:100:in `run'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-0.12.6/lib/compass/commands/watch_project.rb:147:in `recompile'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/fssm-0.2.10/lib/fssm/path.rb:73:in `call'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/fssm-0.2.10/lib/fssm/path.rb:73:in `run_callback'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/fssm-0.2.10/lib/fssm/path.rb:55:in `callback_action'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/fssm-0.2.10/lib/fssm/path.rb:35:in `update'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/fssm-0.2.10/lib/fssm/state/directory.rb:39:in `block in modified'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/fssm-0.2.10/lib/fssm/state/directory.rb:37:in `each'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/fssm-0.2.10/lib/fssm/state/directory.rb:37:in `modified'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/fssm-0.2.10/lib/fssm/state/directory.rb:18:in `refresh'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:17:in `block (2 levels) in run'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:17:in `each'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:17:in `block in run'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:15:in `loop'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:15:in `run'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/fssm-0.2.10/lib/fssm/monitor.rb:26:in `run'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/fssm-0.2.10/lib/fssm.rb:70:in `monitor'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-0.12.6/lib/compass/commands/watch_project.rb:87:in `perform'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-0.12.6/lib/compass/commands/base.rb:18:in `execute'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-0.12.6/lib/compass/commands/project_base.rb:19:in `execute'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-0.12.6/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-0.12.6/lib/compass/exec/sub_command_ui.rb:15:in `run!'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-0.12.6/bin/compass:30:in `block in <top (required)>'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-0.12.6/bin/compass:44:in `call'
+C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/compass-0.12.6/bin/compass:44:in `<top (required)>'
+C:/Ruby22-x64/bin/compass:23:in `load'
+C:/Ruby22-x64/bin/compass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Undefined variable: \"$zen-reverse-all-floats\".\A         on line 27 of C:/OpenServer/domains/village/sites/all/themes/village/sass/layouts/responsive.scss"; }
