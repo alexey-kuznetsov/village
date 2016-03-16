@@ -833,6 +833,10 @@ article.node-book{
 					}
 				}
 			}
+			.flexslider{
+				border: none;
+				margin: 0;
+			}
 	}
 	.right{
 		@include zen-grid-item(1,2);
@@ -842,18 +846,28 @@ article.node-book{
 			padding-right: 40px;
 		}
 		header{
+			.breadcrumb{
+				float: left;
+				position: absolute;
+			}
+			.field-name-field-icon{
+				text-align: center;
+			}
 			padding-top: 20px;
 			.node-title{
 				text-align: center;
+				text-transform: uppercase;
 			}
 		}
 		.page-next{
+			color: #000;
 			position: absolute;
 			right: 0px;
 			top: 50%;
 			transform: rotate(270deg) translateX(-90px);
 		}
 		.page-previous{
+			color: #000;
 			position: absolute;
 			left: -30px;
 			top: 50%;

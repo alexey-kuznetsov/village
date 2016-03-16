@@ -17,6 +17,7 @@
 	<?php
 		print theme('breadcrumb', array('breadcrumb'=>drupal_get_breadcrumb()));
 	?>
+	  <?php if($content['field_icon']) print render($content['field_icon']); ?>
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
         <h2<?php print $title_attributes; ?>><?php print $title; ?></h2>      

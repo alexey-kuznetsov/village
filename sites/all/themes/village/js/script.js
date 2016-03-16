@@ -13,8 +13,10 @@
 (function ($, Drupal, window, document, undefined) {
 	$(document).ready(
 		function(){			
-			colr = getAverageRGB($('li img').first().attr('src'))
+			//colr = getAverageRGB($('li img').first().attr('src'));
+			colr = getAverageRGB($('.field-name-field-icon img').first().attr('src'));
 			$('.breadcrumb a').css('color', colr );
+			$('a.page-next').css('color', colr );
 			$('body').append('<style>.flex-active{background:'+colr+' !important}</style>');
 		}
 	);
@@ -61,10 +63,11 @@ function getAverageRGB(img) {
     length = data.data.length;
 
     while ( (i += blockSize * 4) < length ) {
-        ++count;
+        if (data.data[i] < 250 && data.data[i+1] < 250 && data.data[i+2] < 250)
+		{++count;
         rgb.r += data.data[i];
         rgb.g += data.data[i+1];
-        rgb.b += data.data[i+2];
+        rgb.b += data.data[i+2];}
     }
 
     // ~~ used to floor values
