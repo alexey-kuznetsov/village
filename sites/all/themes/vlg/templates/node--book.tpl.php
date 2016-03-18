@@ -6,7 +6,7 @@
  * Complete documentation for this file is available online.
  * @see https://drupal.org/node/1728164
  */
-?><div class="village-slider">
+?><?php if($page):?><div class="village-slider"><?php endif; ?>
 <article class="v-grid-template node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>> 
     <div class="left v-grid-template__list-img">
 	 <?php print render($content['field_slide']);?>
@@ -32,12 +32,12 @@
     hide($content['comments']);
     hide($content['links']);
     print render($content);
-  ?>
-
-  <?php //print render($content['links']); ?>
-
-  <?php print render($content['comments']); ?>
-</div>
+  ?>  
+  </div>
+  <?php if(!$page):?>
+	<button class="arrows arrow__prev "><span class="icon-arrow-left"></span></button>
+	<button class="arrows arrow__next"><span class="icon-arrow-right"></span></button>
+<?php endif; ?>
 </div>
 </article>
-</div>
+<?php if($page):?></div><?php endif; ?>
