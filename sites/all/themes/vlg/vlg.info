@@ -2,6 +2,7 @@ name        = Vlg
 core        = 7.x
 
 stylesheets[all][] = css/main.css
+stylesheets[all][] = system.menus.css
 scripts[] = js/main.js
 scripts[] = js/vendor/slick.min.js
 scripts[] = js/vendor/jquery.mCustomScrollbar.concat.min.js

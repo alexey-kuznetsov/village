@@ -6,13 +6,14 @@
  * Complete documentation for this file is available online.
  * @see https://drupal.org/node/1728164
  */
-?>
-<article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>> 
-    <div class="left">
+?><div class="village-slider">
+<article class="v-grid-template node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>> 
+    <div class="left v-grid-template__list-img">
 	 <?php print render($content['field_slide']);?>
-	 <div class="village-menu"><?php print $tree; ?></div>
+	 <div class="village-pagin-nav"><?php print $tree; ?></div>
 	</div>
-	<div class="right">
+	<div class="right v-grid-template__content">
+	<div class="v-grid-template__wrap">
 	<header>
 	<?php
 		print theme('breadcrumb', array('breadcrumb'=>drupal_get_breadcrumb()));
@@ -20,19 +21,9 @@
 	  <?php if($content['field_icon']) print render($content['field_icon']); ?>
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
-        <h2<?php print $title_attributes; ?>><?php print $title; ?></h2>      
+        <h1 class="text-center"><?php print $title; ?></h1>      
       <?php print render($title_suffix); ?>
-	 <?php print render($tabs); ?>
-      <?php if ($display_submitted): ?>
-        <p class="submitted">
-          <?php print $user_picture; ?>
-          <?php print $submitted; ?>
-        </p>
-      <?php endif; ?>
-
-      <?php if ($unpublished): ?>
-        <mark class="unpublished"><?php print t('Unpublished'); ?></mark>
-      <?php endif; ?>
+	 <?php print render($tabs); ?>           
     </header>
   <?php endif; ?>
 
@@ -47,4 +38,6 @@
 
   <?php print render($content['comments']); ?>
 </div>
+</div>
 </article>
+</div>

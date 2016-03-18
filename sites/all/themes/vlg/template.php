@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * @file
  * Contains the theme's functions to manipulate Drupal's default markup.
@@ -84,6 +84,16 @@ function vlg_preprocess_node_book(&$variables, $hook){
 	$variables['tabs'] = menu_local_tabs();
 }
 
+function vlg_breadcrumb($variables) {
+  $breadcrumb = $variables['breadcrumb'];
+
+  if (!empty($breadcrumb)) {
+    // Provide a navigational heading to give context for breadcrumb links to
+    // screen-reader users. Make the heading invisible with .element-invisible.	
+    $output = '<nav class="village-nav"><ul><li>' . implode('</li><li>', $breadcrumb) . '</li></ul></nav>';
+    return $output;
+  }
+}
 
 /**
  * Override or insert variables into the comment templates.
