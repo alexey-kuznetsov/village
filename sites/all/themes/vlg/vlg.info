@@ -3,7 +3,9 @@ core        = 7.x
 
 stylesheets[all][] = css/main.css
 stylesheets[all][] = system.menus.css
+stylesheets[all][] = css/pure-min.css
 scripts[] = js/main.js
 scripts[] = js/vendor/slick.min.js
 scripts[] = js/vendor/jquery.mCustomScrollbar.concat.min.js
 scripts[] = js/vendor/masonry.pkgd.min.js
+scripts[] = js/vendor/wow.min.js
