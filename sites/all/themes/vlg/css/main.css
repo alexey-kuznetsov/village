@@ -171,7 +171,7 @@ blockquote {
   font-family: 'Georgia';
 }
 .pure-g [class*="pure-u"] {
-  font-family: 'Georgia';
+  font-family: 'Georgia' !important;
 }
 @media (max-width: 768px) {
   .v-grid-template__content .h1,

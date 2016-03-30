@@ -1,0 +1,63 @@
+<?php
+/**
+ * Implements hook_menu
+ */
+function ws_villages_menu(){
+	$items = array();
+	$items['villagelist'] = array(
+		'title' => 'Деревни',
+		'type' => MENU_NORMAL_ITEM,
+		'page callback' => 'ws_villages_page',
+		'access arguments' => array('access content'),
+	);
+	return $items;
+}
+
+/**
+ * Generate page
+ */
+function ws_villages_page(){
+	$output = '';
+	$output .= '<div class="v-grid-template clearfix">';
+//left pane
+	$output .= '<div class="v-grid-template__list-img" style="background-image: url(sites/default/files/img/img1.jpg);">
+            <nav class="village-pagin-nav">
+                <ul>
+                    <li><a href="#">Генплан</a></li>
+                    <li><a href="#">Коммуникации</a></li>
+                    <li><a href="#">Документы</a></li>
+                </ul>
+            </nav>
+        </div>';
+//right pane
+	$output .= '  <div class="v-grid-template__content">
+            <div class="v-grid-template__wrap">';
+			$crumb = drupal_get_breadcrumb();
+	$output .= '<nav class="village-nav">
+                    <ul>
+                        <li>'.$crumb[0].'</li>
+                    </ul>
+                </nav>';
+	$output	.= '<div class="text-center village-logo">
+                    <img src="sites/default/files/img/village-logo/list_logo.png" alt="">
+                    <div class="h1">ДЕРЕВНИ</div>
+                </div>';
+	$output .= '<div class="pure-g">';
+	$terms = taxonomy_get_tree(2);
+	foreach($terms as $term){
+		$output .= '<div class="pure-u-1-4 category-list">';
+		$output .= '<div class="title">' . $term->name . '</div>';
+		$nids = taxonomy_select_nodes($term->tid);
+		if(!empty($nids)) {
+			$output .= '<ul>';
+		$nodes = node_load_multiple($nids);
+			foreach($nodes as $node){
+				$output .= '<li><span class="bg-green-accent-1"></span>'. l($node->title, drupal_get_path_alias('node/'. $node->nid)) . '</li>';
+			}
+			$output .= '</ul>';
+		}
+		$output .= '</div>';
+	}
+	$output .= '</div></div></div>';
+	return $output;
+} 
