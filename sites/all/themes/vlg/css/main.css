@@ -982,7 +982,7 @@ h2 {
     padding-left: 0;
   }
   .village-slider {
-    height: auto;
+    height: auto !important;
 }
 }
 @media (max-width: 768px) {
