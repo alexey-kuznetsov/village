@@ -81,13 +81,13 @@ $(document).ready(function () {
 
 	//
 
-	$('.village-slider .village-pagin-nav a').click(function(e){
+	/*$('.village-slider .village-pagin-nav a').click(function(e){
 		e.preventDefault();
 
 		var $index = $(this).parents('li').index();
 
 		$('.village-slider').slick('slickGoTo', $index);
-	});
+	});*/
 
 	//
 
