@@ -10,7 +10,7 @@
 <article class="v-grid-template node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>> 
     <div class="left v-grid-template__list-img">
 	 <?php print render($content['field_slide']);?>
-	 <div class="village-pagin-nav"><?php print $tree; ?></div>
+	 <div class="village-pagin-nav"><?php if(isset($tree)) print $tree; ?></div>
 	</div>
 	<div class="right v-grid-template__content">
 	<div class="v-grid-template__wrap">

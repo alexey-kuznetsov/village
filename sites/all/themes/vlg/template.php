@@ -79,9 +79,11 @@ function vlg_preprocess_node(&$variables, $hook) {
 }
 
 function vlg_preprocess_node_book(&$variables, $hook){	
-	$book_link = $variables['node']->book;
-	$variables['tree'] = book_children($book_link);
-	$variables['tabs'] = menu_local_tabs();
+	if(isset($variables['node']->book)){
+		$book_link = $variables['node']->book;
+		$variables['tree'] = book_children($book_link);
+	}
+		$variables['tabs'] = menu_local_tabs();
 }
 
 function vlg_breadcrumb($variables) {

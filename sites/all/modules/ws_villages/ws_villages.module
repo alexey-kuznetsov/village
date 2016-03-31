@@ -17,6 +17,32 @@ function ws_villages_menu(){
  * Generate page
  */
 function ws_villages_page(){
+	$class_map = array();
+	$class_map[0] = 'bg-green-accent-1';
+	$class_map[1] = 'bg-red-accent-5';
+	$class_map[2] = 'bg-red-accent-2';
+	$class_map[3] = 'bg-green-accent-2';
+	$class_map[4] = 'bg-purple-accent-1';
+	$class_map[5] = 'bg-purple-accent-4';
+	$class_map[6] = 'bg-cyan-accent-1';
+	$class_map[7] = 'bg-brown-accent-4';
+	$class_map[8] = 'bg-brown-accent-3';
+	$class_map[9] = 'bg-green-accent-4';
+	$class_map[10] = 'bg-cyan-accent-2';
+	$class_map[11] = 'bg-green-accent-2';
+	$class_map[12] = 'bg-orange-accent-2';
+	$class_map[13] = 'bg-red-accent-3';
+	$class_map[14] = 'bg-grey-accent-1';
+	$class_map[15] = 'bg-brown-accent-5';
+	$class_map[16] = 'bg-orange-accent-1';
+	$class_map[17] = 'bg-blue-accent-1';
+	$class_map[18] = 'bg-red-accent-1';
+	$class_map[19] = 'bg-red-accent-4';
+	$class_map[20] = 'bg-brown-accent-1';
+	$class_map[21] = 'bg-yellow-accent-1';
+	$class_map[22] = 'bg-brown-accent-2';
+	$class_map[23] = 'bg-purple-accent-3';
+	$class_map[24] = 'bg-purple-accent-2';
 	$output = '';
 	$output .= '<div class="v-grid-template clearfix">';
 //left pane
@@ -44,7 +70,8 @@ function ws_villages_page(){
                 </div>';
 	$output .= '<div class="pure-g">';
 	$terms = taxonomy_get_tree(2);
-	foreach($terms as $term){
+	$i = 0;
+	foreach($terms as $term){		
 		$output .= '<div class="pure-u-1-4 category-list">';
 		$output .= '<div class="title">' . $term->name . '</div>';
 		$nids = taxonomy_select_nodes($term->tid);
@@ -52,7 +79,8 @@ function ws_villages_page(){
 			$output .= '<ul>';
 		$nodes = node_load_multiple($nids);
 			foreach($nodes as $node){
-				$output .= '<li><span class="bg-green-accent-1"></span>'. l($node->title, drupal_get_path_alias('node/'. $node->nid)) . '</li>';
+				$output .= '<li><span class="'.$class_map[$i].'"></span>'. l($node->title, drupal_get_path_alias('node/'. $node->nid)) . '</li>';
+				$i++;
 			}
 			$output .= '</ul>';
 		}
