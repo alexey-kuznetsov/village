@@ -89,3 +89,36 @@ function ws_villages_page(){
 	$output .= '</div></div></div>';
 	return $output;
 } 
+
+function ws_villages_bread(){ 
+	$trail = menu_get_active_trail(); 
+	$crumbs = drupal_get_breadcrumb();
+	//Get submenu
+	$terms = taxonomy_get_tree(2);	
+	$output = '<ul class="submenu">';
+	foreach($terms as $term){		
+		
+		$output .= '<li>' . l($term->name, '/villages/' . drupal_get_path_alias('taxonomy/term/'. $term->tid));
+		$nids = taxonomy_select_nodes($term->tid);
+		if(!empty($nids)) {
+			$output .= '<ul class="submenu">';
+		$nodes = node_load_multiple($nids);
+			foreach($nodes as $node){
+				$output .= '<li>'. l($node->title, drupal_get_path_alias('node/'. $node->nid)) . '</li>';				
+			}
+			$output .= '</ul>';
+		}
+		$output .= '</li>';
+	}
+	$output .= '</ul>';
+	$i = 0;
+	foreach($crumbs as $crumb){
+		if(isset($trail[$i]['path'])){ 
+			if($trail[$i]['path'] == 'villages/%'){
+				$crumbs[$i] .= $output;
+			}
+		}
+		$i++;
+	}
+	return $crumbs;
+}

@@ -105,4 +105,7 @@ $(document).ready(function () {
 
 		$(this).parents('.text-block').find('.dropdown').slideToggle();
 	});
+	// experiments
+	$('.village-nav a').hover(function(){if($(this).next().hasClass('submenu')){$(this).next().addClass('active')}});
+	$('.submenu.active').mouseout(function(){$(this).removeClass('active')});
 });})(jQuery, Drupal, this, this.document);

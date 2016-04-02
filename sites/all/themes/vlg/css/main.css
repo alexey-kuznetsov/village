@@ -2034,3 +2034,18 @@ h2 {
 .popup {
   display: none;
 }
+
+/* My additions */
+.submenu {display: none; transition: 1s;}
+a:hover + .submenu, .submenu:hover, .submenu.active {display: block;}
+
+.village-nav ul li {
+	position: relative;
+}
+
+.submenu{
+	position: absolute;
+    top: 0;
+    left: 110%;
+	background: #fff;
+}

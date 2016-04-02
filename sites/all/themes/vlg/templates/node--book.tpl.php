@@ -15,10 +15,10 @@
 	<div class="right v-grid-template__content">
 	<div class="v-grid-template__wrap">
 	<header>
-	<?php
-		print theme('breadcrumb', array('breadcrumb'=>drupal_get_breadcrumb()));
+	<?php //var_dump(menu_get_active_trail());
+		print theme('breadcrumb', array('breadcrumb'=>ws_villages_bread()));
 	?>
-	  <?php if($content['field_icon']) print render($content['field_icon']); ?>
+	  <?php if(isset($content['field_icon'])) print render($content['field_icon']); ?>
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
         <h1 class="text-center"><?php print $title; ?></h1>      
