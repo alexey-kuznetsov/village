@@ -91,17 +91,17 @@ function ws_villages_page(){
 } 
 
 function ws_villages_bread(){ 
-	$trail = menu_get_active_trail(); 
+	$trail = menu_get_active_trail(); //var_dump($trail);
 	$crumbs = drupal_get_breadcrumb();
 	//Get submenu
 	$terms = taxonomy_get_tree(2);	
-	$output = '<ul class="submenu">';
+	$output = '<ul class="submenu sf-menu">';
 	foreach($terms as $term){		
 		
 		$output .= '<li>' . l($term->name, '/villages/' . drupal_get_path_alias('taxonomy/term/'. $term->tid));
 		$nids = taxonomy_select_nodes($term->tid);
 		if(!empty($nids)) {
-			$output .= '<ul class="submenu">';
+			$output .= '<ul class="submenu sf-menu">';
 		$nodes = node_load_multiple($nids);
 			foreach($nodes as $node){
 				$output .= '<li>'. l($node->title, drupal_get_path_alias('node/'. $node->nid)) . '</li>';				
@@ -111,14 +111,71 @@ function ws_villages_bread(){
 		$output .= '</li>';
 	}
 	$output .= '</ul>';
-	$i = 0;
-	foreach($crumbs as $crumb){
-		if(isset($trail[$i]['path'])){ 
-			if($trail[$i]['path'] == 'villages/%'){
-				$crumbs[$i] .= $output;
+	///$i = 0;
+	//foreach($crumbs as $crumb){
+		if(isset($trail[1]['path'])){ 
+			if($trail[1]['path'] == 'villages/%'){
+				$crumbs[1] .= $output;
+				if($trail[1]['href'] != 'villages/all'){
+					$hr = explode('/',$trail[1]['href']);
+					$url = drupal_lookup_path('source', $hr[1]);
+					$term_base_path = 'taxonomy/term/';
+					if (strncmp($term_base_path, $url, strlen($term_base_path)) == 0)
+					{					
+						$current_tid = intval(str_replace($term_base_path, '', $url));
+						$current_term = taxonomy_term_load($current_tid);
+						$nids = taxonomy_select_nodes($current_term->tid);
+						if(!empty($nids)) {
+							$out = '<ul class="submenu sf-menu">';
+						$nodes = node_load_multiple($nids);
+							foreach($nodes as $node){
+								$out .= '<li>'. l($node->title, drupal_get_path_alias('node/'. $node->nid)) . '</li>';				
+							}
+							$out .= '</ul>';
+						}
+						$crumbs[] = l($current_term->name, $trail[1]['href']) . $out;
+					}
+				}
 			}
 		}
-		$i++;
-	}
+		if(isset($trail[1]['router_path'])){ 
+			if($trail[1]['router_path'] == 'node/%'){
+				$cr = array();
+				$cr[] = '<a href="/villages/all">Деревни</a>'. $output;
+				array_splice($crumbs, 1,0, $cr);
+				$node = menu_get_object();
+				if(!empty($node->field_category)){ 
+				$cur_tid = $node->field_category['und'][0]['tid'];
+				} else { 
+					if(isset($trail[1]['menu_name'])){ 
+						if(strpos($trail[1]['menu_name'], 'book-toc-') !== false){ 
+							$bookarr = explode('-', $trail[1]['menu_name']);
+							$bnid = $bookarr[2];
+							$node = node_load($bnid);
+							if(isset($node->field_category)){
+							$cur_tid = $node->field_category['und'][0]['tid'];
+						}
+					}
+				}
+				}
+				if(isset($cur_tid)){
+					$current_term = taxonomy_term_load($cur_tid);
+					$nids = taxonomy_select_nodes($current_term->tid);
+						if(!empty($nids)) {
+							$out = '<ul class="submenu sf-menu">';
+						$nodes = node_load_multiple($nids);
+							foreach($nodes as $node){
+								$out .= '<li>'. l($node->title, drupal_get_path_alias('node/'. $node->nid)) . '</li>';				
+							}
+							$out .= '</ul>';
+						}
+						$cr = array();
+						$cr[] = l($current_term->name, drupal_get_path_alias('taxonomy/term/'. $cur_tid)) . $out;
+						array_splice($crumbs, 2,0, $cr);
+				}
+			}
+		}
+		//$i++;
+	//}
 	return $crumbs;
 }

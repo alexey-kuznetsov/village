@@ -92,7 +92,7 @@ function vlg_breadcrumb($variables) {
   if (!empty($breadcrumb)) {
     // Provide a navigational heading to give context for breadcrumb links to
     // screen-reader users. Make the heading invisible with .element-invisible.	
-    $output = '<nav class="village-nav"><ul><li>' . implode('</li><li>', $breadcrumb) . '</li></ul></nav>';
+    $output = '<nav class="village-nav"><ul class="sf-menu"><li>' . implode('</li><li>', $breadcrumb) . '</li></ul></nav>';
     return $output;
   }
 }

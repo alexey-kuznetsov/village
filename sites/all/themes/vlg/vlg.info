@@ -10,3 +10,4 @@ scripts[] = js/vendor/jquery.mCustomScrollbar.concat.min.js
 scripts[] = js/vendor/jquery.fancybox.js
 scripts[] = js/vendor/masonry.pkgd.min.js
 scripts[] = js/vendor/wow.min.js
+scripts[] = js/vendor/superfish.js

@@ -106,6 +106,15 @@ $(document).ready(function () {
 		$(this).parents('.text-block').find('.dropdown').slideToggle();
 	});
 	// experiments
-	$('.village-nav a').hover(function(){if($(this).next().hasClass('submenu')){$(this).next().addClass('active')}});
-	$('.submenu.active').mouseout(function(){$(this).removeClass('active')});
+	//$('.village-nav a').hover(function(){if($(this).next().hasClass('submenu')){$(this).next().addClass('active')}});
+	//$('.submenu.active').mouseout(function(){$(this).removeClass('active')});
 });})(jQuery, Drupal, this, this.document);
+
+jQuery(document).ready(function() {
+		jQuery('ul.sf-menu').superfish({
+			delay:       1000,                            // one second delay on mouseout
+			animation:   {opacity:'show',height:'show'},  // fade-in and slide-down animation
+			speed:       'fast',                          // faster animation speed
+			autoArrows:  false                            // disable generation of arrow mark-up
+		});
+	});

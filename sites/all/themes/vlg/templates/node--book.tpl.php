@@ -34,10 +34,13 @@
     print render($content);
   ?>  
   </div>
-  <?php if(!$page):?>
+  
 	<button class="arrows arrow__prev "><span class="icon-arrow-left"></span></button>
 	<button class="arrows arrow__next"><span class="icon-arrow-right"></span></button>
-<?php endif; ?>
+
 </div>
 </article>
-<?php if($page):?></div><?php endif; ?>
+<?php if($page):
+	$block = module_invoke('views', 'block_view', 'villages-block_1');
+	print render($block['content']);
+?></div><?php endif; ?>
