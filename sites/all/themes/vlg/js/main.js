@@ -108,6 +108,15 @@ $(document).ready(function () {
 	// experiments
 	//$('.village-nav a').hover(function(){if($(this).next().hasClass('submenu')){$(this).next().addClass('active')}});
 	//$('.submenu.active').mouseout(function(){$(this).removeClass('active')});
+	function windowSize(){
+    if ($(window).width() <= '992'){
+        $('.v-grid-template__list-img').height($(window).height()/2);
+    } else {$('.v-grid-template__list-img').removeAttr('style');}
+}
+
+// или "два-в-одном", вместо двух последних строк:
+$(window).on('load resize',windowSize);
+	
 });})(jQuery, Drupal, this, this.document);
 
 jQuery(document).ready(function() {
