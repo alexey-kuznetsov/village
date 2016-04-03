@@ -2047,7 +2047,8 @@ a:hover + .submenu, .submenu:hover, .submenu.active {display: block;}*/
 	position: absolute;
     top: 0;
     left: 110%;
-	background: #fff;
+	background: #F5EEF9;
+    padding: 10px !important;
 }
 
 .chapter{
