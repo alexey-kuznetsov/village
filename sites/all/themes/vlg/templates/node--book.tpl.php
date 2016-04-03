@@ -14,17 +14,18 @@
 	</div>
 	<div class="right v-grid-template__content">
 	<div class="v-grid-template__wrap">
-	<header>
-	<?php //var_dump(menu_get_active_trail());
+	
+	<?php 
 		print theme('breadcrumb', array('breadcrumb'=>ws_villages_bread()));
 	?>
+	<div class="v-grid-template__text">
 	  <?php if(isset($content['field_icon'])) print render($content['field_icon']); ?>
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
         <h1 class="text-center"><?php print $title; ?></h1>      
       <?php print render($title_suffix); ?>
 	 <?php print render($tabs); ?>           
-    </header>
+   
   <?php endif; ?>
 
   <?php
@@ -32,7 +33,8 @@
     hide($content['comments']);
     hide($content['links']);
     print render($content);
-  ?>  
+  ?>
+</div>  
   </div>
   
 	<button class="arrows arrow__prev "><span class="icon-arrow-left"></span></button>
