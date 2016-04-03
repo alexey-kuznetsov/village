@@ -2049,3 +2049,8 @@ a:hover + .submenu, .submenu:hover, .submenu.active {display: block;}*/
     left: 110%;
 	background: #fff;
 }
+
+.chapter{
+	text-transform: none;
+	font-size: 0.8em;
+}

@@ -80,10 +80,14 @@ function vlg_preprocess_node(&$variables, $hook) {
 
 function vlg_preprocess_node_book(&$variables, $hook){	
 	if(isset($variables['node']->book)){
-		$book_link = $variables['node']->book;
+		$book_link = $variables['node']->book; //var_dump($book_link);
 		$variables['tree'] = book_children($book_link);
 	}
 		$variables['tabs'] = menu_local_tabs();
+		if($book_link['bid'] !=  $book_link['nid']){
+			$bookroot = node_load($book_link['bid']);
+			$variables['title'] = $bookroot->title . '<div class="chapter">' . $variables['title'] . '</div>';
+		}
 }
 
 function vlg_breadcrumb($variables) {
