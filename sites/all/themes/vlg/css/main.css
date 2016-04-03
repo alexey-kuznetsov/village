@@ -2049,6 +2049,7 @@ a:hover + .submenu, .submenu:hover, .submenu.active {display: block;}*/
     left: 110%;
 	background: #F5EEF9;
     padding: 10px !important;
+	white-space: nowrap;
 }
 
 .chapter{

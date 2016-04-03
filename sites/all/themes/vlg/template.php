@@ -87,7 +87,9 @@ function vlg_preprocess_node_book(&$variables, $hook){
 		if($book_link['bid'] !=  $book_link['nid']){
 			$bookroot = node_load($book_link['bid']);
 			$variables['title'] = $bookroot->title . '<div class="chapter">' . $variables['title'] . '</div>';
-		}
+		} elseif ($variables['page']){
+			$variables['title'] .= '<div class="chapter">Идея</div>';
+		}		
 }
 
 function vlg_breadcrumb($variables) {
