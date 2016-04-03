@@ -2053,5 +2053,7 @@ a:hover + .submenu, .submenu:hover, .submenu.active {display: block;}*/
 
 .chapter{
 	text-transform: none;
-	font-size: 0.8em;
+	font-weight: 100;
+	font-family: "Georgia";
+    font-size: 16px;
 }
