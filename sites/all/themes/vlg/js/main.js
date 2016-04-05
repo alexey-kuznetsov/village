@@ -113,9 +113,12 @@ $(document).ready(function () {
         $('.v-grid-template__list-img').height($(window).height()/2);
     } else {$('.v-grid-template__list-img').removeAttr('style');}
 }
-
-// или "два-в-одном", вместо двух последних строк:
 $(window).on('load resize',windowSize);
+
+$('.village-pagin-nav .menu li a').click(function(){ var x = $(this).parent().parent().children();
+	$('.village-slider').slick('slickGoTo',(x.index($(this).parent())));
+	return false;
+});
 	
 });})(jQuery, Drupal, this, this.document);
 
