@@ -81,16 +81,16 @@ function vlg_preprocess_node(&$variables, $hook) {
 function vlg_preprocess_node_book(&$variables, $hook){	
 	if(isset($variables['node']->book)){
 		$book_link = $variables['node']->book;
-		$variables['tree'] = str_replace('menu">','menu"><li>' . l('Идея', drupal_get_path_alias('node/'. $variables['node']->nid)) . '</li>',book_children($book_link));
-	}
-		$variables['tabs'] = menu_local_tabs();
+		$variables['tree'] = str_replace('menu">','menu"><li>' . l('Идея', drupal_get_path_alias('node/'. $variables['node']->nid)) . '</li>',book_children($book_link));			
 		if($book_link['bid'] !=  $book_link['nid']){
 			$bookroot = node_load($book_link['bid']);
 			$variables['tree'] = str_replace('menu">','menu"><li>' . l('Идея', drupal_get_path_alias('node/'. $bookroot->nid)) . '</li>',book_children($bookroot->book));
 			$variables['title'] = $bookroot->title . '<div class="chapter">' . $variables['title'] . '</div>';
 		} elseif ($variables['page']){
 			$variables['title'] .= '<div class="chapter">Идея</div>';
-		}		
+		}	
+	}	
+		$variables['tabs'] = menu_local_tabs();
 }
 
 function vlg_breadcrumb($variables) {

@@ -92,7 +92,7 @@ function ws_villages_page(){
 
 function ws_villages_bread(){ 
 	$trail = menu_get_active_trail(); //var_dump($trail);
-	$crumbs = drupal_get_breadcrumb();
+	$crumbs = drupal_get_breadcrumb(); //var_dump($crumbs);
 	//Get submenu
 	$terms = taxonomy_get_tree(2);	
 	$output = '<ul class="submenu sf-menu">';
@@ -110,10 +110,8 @@ function ws_villages_bread(){
 		}
 		$output .= '</li>';
 	}
-	$output .= '</ul>';
-	///$i = 0;
-	//foreach($crumbs as $crumb){
-		if(isset($trail[1]['path'])){ 
+	$output .= '</ul>';	
+		if(isset($trail[1]['path'])){ 			
 			if($trail[1]['path'] == 'villages/%'){
 				$crumbs[1] .= $output;
 				if($trail[1]['href'] != 'villages/all'){
@@ -138,8 +136,8 @@ function ws_villages_bread(){
 				}
 			}
 		}
-		if(isset($trail[1]['router_path'])){ 
-			if($trail[1]['router_path'] == 'node/%'){
+		if(isset($trail[1]['router_path'])  || $trail[1]['path'] == 'geography' || $trail[1]['path'] == 'people'){ 
+			if($trail[1]['router_path'] == 'node/%'  || $trail[1]['path'] == 'geography' || $trail[1]['path'] == 'people'){
 				$cr = array();
 				$cr[] = '<a href="/villages/all">Деревни</a>'. $output;
 				array_splice($crumbs, 1,0, $cr);
@@ -175,7 +173,10 @@ function ws_villages_bread(){
 				}
 			}
 		}
-		//$i++;
-	//}
+		//Add geo and people links
+		$cr = array();
+		$cr[] = l('География','/geography');
+		$cr[] = l('Люди','/people');
+		array_splice($crumbs, 1,0, $cr);
 	return $crumbs;
 }
