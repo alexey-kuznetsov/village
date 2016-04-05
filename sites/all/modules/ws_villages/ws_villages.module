@@ -170,7 +170,7 @@ function ws_villages_bread(){
 							$out .= '</ul>';
 						}
 						$cr = array();
-						$cr[] = l($current_term->name, drupal_get_path_alias('taxonomy/term/'. $cur_tid)) . $out;
+						$cr[] = l($current_term->name, '/villages/' . drupal_get_path_alias('taxonomy/term/'. $cur_tid)) . $out;
 						array_splice($crumbs, 2,0, $cr);
 				}
 			}
