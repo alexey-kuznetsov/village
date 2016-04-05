@@ -136,8 +136,14 @@ function ws_villages_bread(){
 				}
 			}
 		}
-		if(isset($trail[1]['router_path'])  || $trail[1]['path'] == 'geography' || $trail[1]['path'] == 'people'){ 
-			if($trail[1]['router_path'] == 'node/%'  || $trail[1]['path'] == 'geography' || $trail[1]['path'] == 'people'){
+		$cond = false;
+		if(isset($trail[1]['router_path'])){
+			if($trail[1]['router_path'] == 'node/%') $cond = true;
+		}
+		if(isset($trail[1]['path'])){
+			if($trail[1]['path'] == 'geography' || $trail[1]['path'] == 'people')$cond = true;
+		}
+		if($cond){
 				$cr = array();
 				$cr[] = '<a href="/villages/all">Деревни</a>'. $output;
 				array_splice($crumbs, 1,0, $cr);
@@ -171,7 +177,6 @@ function ws_villages_bread(){
 						$cr[] = l($current_term->name, '/villages/' . drupal_get_path_alias('taxonomy/term/'. $cur_tid)) . $out;
 						array_splice($crumbs, 2,0, $cr);
 				}
-			}
 		}
 		//Add geo and people links
 		$cr = array();
