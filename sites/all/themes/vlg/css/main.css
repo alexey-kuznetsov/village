@@ -1062,6 +1062,7 @@ h2 {
 }
 .village-slider img {
   display: inline-block;
+  margin: 30px;
 }
 .village-slider .arrows {
   position: absolute;
