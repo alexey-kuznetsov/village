@@ -122,7 +122,7 @@ function ws_villages_bread(){
 					{					
 						$current_tid = intval(str_replace($term_base_path, '', $url));
 						$current_term = taxonomy_term_load($current_tid);
-						$nids = taxonomy_select_nodes($current_term->tid);
+						$nids = taxonomy_select_nodes($current_term->tid, $pager = FALSE, $limit = FALSE, $order=array('t.created' => 'ASC',));
 						if(!empty($nids)) {
 							$out = '<ul class="villcat submenu sf-menu">';
 						$nodes = node_load_multiple($nids);
