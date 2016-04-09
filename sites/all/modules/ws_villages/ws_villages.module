@@ -124,7 +124,7 @@ function ws_villages_bread(){
 						$current_term = taxonomy_term_load($current_tid);
 						$nids = taxonomy_select_nodes($current_term->tid);
 						if(!empty($nids)) {
-							$out = '<ul class="submenu sf-menu">';
+							$out = '<ul class="villcat submenu sf-menu">';
 						$nodes = node_load_multiple($nids);
 							foreach($nodes as $node){
 								$out .= '<li>'. l($node->title, drupal_get_path_alias('node/'. $node->nid)) . '</li>';				

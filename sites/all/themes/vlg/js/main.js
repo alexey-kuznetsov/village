@@ -115,7 +115,7 @@ $(document).ready(function () {
 }
 $(window).on('load resize',windowSize);
 
-$('.page-node .village-pagin-nav .menu li a').click(function(){ var x = $(this).parent().parent().children();
+$('.page-node .village-pagin-nav .menu li a, .page-villages .villcat li a').click(function(){ var x = $(this).parent().parent().children();
 	$('.village-slider').slick('slickGoTo',(x.index($(this).parent())));
 	return false;
 });
