@@ -155,7 +155,7 @@ body {
   padding: 0;
   font-family: 'Georgia';
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.5;
   color: #000;
   background: #eee;
@@ -2058,4 +2058,11 @@ a:hover + .submenu, .submenu:hover, .submenu.active {display: block;}*/
 	font-weight: 100;
 	font-family: "Georgia";
     font-size: 16px;
+}
+.chapter a{
+	color: #000;
+	text-decoration: none;
+}
+.chapter a:hover{
+	text-decoration: underline;
 }

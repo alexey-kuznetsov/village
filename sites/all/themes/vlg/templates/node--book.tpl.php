@@ -22,10 +22,11 @@
 	  <?php if(isset($content['field_icon'])) print render($content['field_icon']); ?>
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
-        <h1 class="text-center"><?php print $title; ?></h1>      
+        <h1 class="text-center"><?php print $title; ?>
+			<?php if(isset($content['field_related_village'])): ?> <div class="chapter"><?php  print render($content['field_related_village']); ?></div><?php endif;?>
+		</h1>      
       <?php print render($title_suffix); ?>
-	 <?php print render($tabs); ?>           
-   
+	 <?php print render($tabs); ?>      
   <?php endif; ?>
 
   <?php
