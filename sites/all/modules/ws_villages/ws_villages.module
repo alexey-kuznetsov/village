@@ -181,7 +181,37 @@ function ws_villages_bread(){
 		//Add geo and people links
 		$cr = array();
 		$cr[] = l('География','/geography');
-		$cr[] = l('Люди','/people');
-		array_splice($crumbs, 1,0, $cr);
+		$cr[] = l('Люди','/people') . ws_villages_get_people();
+		array_splice($crumbs, 1,0, $cr);ws_villages_get_people();
 	return $crumbs;
 }
+
+function ws_villages_get_people(){
+	$pnids_obj = db_select('field_data_field_rubric', 'r')
+	  ->fields('r', array('entity_id'))
+	  ->condition('r.field_rubric_value', 'people')
+	  ->execute()
+	  ->fetchAll();	  
+	  $pnids = array();
+	  foreach($pnids_obj as $obj){
+		  $pnids[] = $obj->entity_id;
+	  }
+	  $nodes = node_load_multiple($pnids);
+	  usort($nodes, '_ws_village_cmp_obj');
+	  $out = '<ul class="people submenu sf-menu">';
+	  foreach ($nodes as $node){
+		  $out .= '<li>' . l($node->title, drupal_get_path_alias('node/' . $node->nid)) . '</li>';
+	  }
+	  $out .= '</ul>';
+	  return $out;
+}
+
+function _ws_village_cmp_obj($a, $b)
+    {
+        $al = $a->title;
+        $bl = $b->title;
+        if ($al == $bl) {
+            return 0;
+        }
+        return ($al > $bl) ? +1 : -1;
+    }

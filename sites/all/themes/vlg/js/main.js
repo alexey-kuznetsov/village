@@ -110,12 +110,15 @@ $(document).ready(function () {
 	//$('.submenu.active').mouseout(function(){$(this).removeClass('active')});
 	function windowSize(){
     if ($(window).width() <= '992'){
-        $('.v-grid-template__list-img').height($(window).height()/2);
+		if($(window).width() < $(window).height()){
+        $('.v-grid-template__list-img').height($(window).height()/2);} else{
+			 $('.v-grid-template__list-img').height($(window).height());
+		}
     } else {$('.v-grid-template__list-img').removeAttr('style');}
 }
 $(window).on('load resize',windowSize);
 
-$('.page-node .village-pagin-nav .menu li a, .page-villages .villcat li a').click(function(){ var x = $(this).parent().parent().children();
+$('.page-node .village-pagin-nav .menu li a, .page-villages .villcat li a, .page-people .people li a').click(function(){ var x = $(this).parent().parent().children();
 	$('.village-slider').slick('slickGoTo',(x.index($(this).parent())));
 	return false;
 });
