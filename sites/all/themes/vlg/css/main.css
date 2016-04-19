@@ -1679,11 +1679,12 @@ h2 {
   padding: 0 20px;
   margin: 0 0 10px;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 100;
   line-height: 1.6;
   letter-spacing: 1px;
   text-align: left;
 }
+.main-catalog__item .info-text  a{color:#fff;}
 .main-catalog__item .info-text h3{
 	text-align: center;
 }
