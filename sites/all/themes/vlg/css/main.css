@@ -1682,7 +1682,7 @@ h2 {
   font-weight: 600;
   line-height: 1.6;
   letter-spacing: 1px;
-  text-align: justify;
+  text-align: left;
 }
 .main-catalog__item .info-text h3{
 	text-align: center;
