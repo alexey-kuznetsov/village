@@ -122,6 +122,10 @@ $('.page-node .village-pagin-nav .menu li a, .page-villages .villcat li a, .page
 	$('.village-slider').slick('slickGoTo',(x.index($(this).parent())));
 	return false;
 });
+
+$(.'torture').click(function(){
+	$(this).parents('.text-slider').slick('slickGoTo',1);
+});
 	
 });})(jQuery, Drupal, this, this.document);
 
