@@ -123,7 +123,8 @@ $('.page-node .village-pagin-nav .menu li a, .page-villages .villcat li a, .page
 	return false;
 });
 
-$('.torture').click(function(){
+$('.torture').click(function(e){
+	e.preventDefault();
 	$(this).parents('.text-slider').slick('slickGoTo',1);
 });
 	
