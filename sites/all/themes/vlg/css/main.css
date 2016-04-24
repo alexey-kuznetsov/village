@@ -916,7 +916,8 @@ h2 {
 }
 .btn-b-w:hover {
   background: #fff;
-  color: #333;
+  color: #333 !important;
+  text-decoration: none !important;
 }
 @media (max-width: 768px) {
   .btn-b-w {
