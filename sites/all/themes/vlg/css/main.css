@@ -2075,3 +2075,6 @@ a:hover + .submenu, .submenu:hover, .submenu.active {display: block;}*/
 #webform-ajax-wrapper-77{
 	display: none;
 }
+.fancybox-wrap #webform-ajax-wrapper-77{
+	display: block !important;
+}
