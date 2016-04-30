@@ -1216,6 +1216,7 @@ h2 {
   right: 48px;
   z-index: 100;
   text-align: right;
+  background-color: rgba(60, 60, 60, 0.43);
 }
 .village-pagin-nav ul {
   list-style: none;
