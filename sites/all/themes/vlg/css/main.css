@@ -2079,3 +2079,5 @@ a:hover + .submenu, .submenu:hover, .submenu.active {display: block;}*/
 .fancybox-wrap #webform-ajax-wrapper-77{
 	display: block !important;
 }
+
+.paper-window{padding: 15px !important;}
